@@ -1,6 +1,9 @@
 #𝘛𝘏𝘌 𝘎𝘌𝘕𝘌𝘙𝘈𝘛𝘖𝘙 𝘉𝘠 𝘚𝘛𝘈𝘙 𝘎𝘈𝘔𝘌𝘙 (ORIGINAL CREATOR)
 #𝘛𝘌𝘓𝘌𝘎𝘙𝘈𝘔 𝘐𝘋 : @nttmodX
 #𝘊𝘏𝘈𝘕𝘕𝘌𝘓 : @NTT_MOD_X
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
 import hmac,hashlib,requests,string,random,json,codecs,time,os,sys,base64,signal,threading,re,subprocess,importlib
 from datetime import datetime
 from Crypto.Cipher import AES
@@ -921,6 +924,24 @@ if __name__ == "__main__":
             main_menu()
     except KeyboardInterrupt:
         safe_exit()
+@app.route("/")
+def home():
+    return jsonify({
+        "status": "running",
+        "message": "STAR Generator API Online"
+    })
+
+@app.route("/gen")
+def gen():
+    uid = request.args.get("uid")
+
+    return jsonify({
+        "success": True,
+        "uid": uid
+    })
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
 #𝘛𝘏𝘌 𝘎𝘌𝘕𝘌𝘙𝘈𝘛𝘖𝘙 𝘉𝘠 𝘚𝘛𝘈𝘙 𝘎𝘈𝘔𝘌𝘙 (ORIGINAL CREATOR)
 #Modified by NTT MOD-X 
 #𝘛𝘌𝘓𝘌𝘎𝘙𝘈𝘔 𝘐𝘋 : @nttmodX
